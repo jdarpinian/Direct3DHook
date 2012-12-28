@@ -315,7 +315,7 @@ namespace ScreenshotInject
                                         SampleDescription = new SlimDX.DXGI.SampleDescription(1, 0), // Ensure single sample
                                         BindFlags = BindFlags.None,
                                         MipLevels = 1,
-                                        OptionFlags = texture.Description.OptionFlags
+                                        OptionFlags = ResourceOptionFlags.None,
                                     });
                                     // Resolve into textureResolved
                                     texture.Device.ResolveSubresource(texture, 0, textureResolved, 0, texture.Description.Format);
@@ -327,16 +327,16 @@ namespace ScreenshotInject
                                 // Create destination texture
                                 Texture2D textureDest = new Texture2D(texture.Device, new Texture2DDescription()
                                     {
-                                        CpuAccessFlags = CpuAccessFlags.None,// CpuAccessFlags.Write | CpuAccessFlags.Read,
+                                        CpuAccessFlags = CpuAccessFlags.None,
                                         Format = SlimDX.DXGI.Format.R8G8B8A8_UNorm, // Supports BMP/PNG
                                         Height = regionToCapture.Height,
-                                        Usage = ResourceUsage.Default,// ResourceUsage.Staging,
+                                        Usage = ResourceUsage.Default,
                                         Width = regionToCapture.Width,
-                                        ArraySize = 1,//texture.Description.ArraySize,
-                                        SampleDescription = new SlimDX.DXGI.SampleDescription(1, 0),// texture.Description.SampleDescription,
+                                        ArraySize = 1,
+                                        SampleDescription = new SlimDX.DXGI.SampleDescription(1, 0),
                                         BindFlags = BindFlags.None,
-                                        MipLevels = 1,//texture.Description.MipLevels,
-                                        OptionFlags = texture.Description.OptionFlags
+                                        MipLevels = 1,
+                                        OptionFlags = ResourceOptionFlags.None,
                                     });
 
                                 // Copy the subresource region, we are dealing with a flat 2D texture with no MipMapping, so 0 is the subresource index
