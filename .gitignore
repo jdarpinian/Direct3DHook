@@ -1,3 +1,7 @@
 *.suo
 */obj/
 bin/
+*.opensdf
+*.sdf
+*.filters
+*.user
